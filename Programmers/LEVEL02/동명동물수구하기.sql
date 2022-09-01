@@ -1,0 +1,9 @@
+-- https://school.programmers.co.kr/learn/courses/30/lessons/59041
+-- 동물 이름 중 두 번 이상 쓰인 이름과 해당 이름이 쓰인 횟수를 조회하는 SQL문, 이름 순
+SELECT NAME, COUNT(NAME) AS COUNT FROM ANIMAL_INS GROUP BY NAME HAVING COUNT(NAME) >= 2 ORDER BY NAME;
+
+SELECT NAME, COUNT(NAME) AS COUNT 
+FROM ANIMAL_INS 
+WHERE NAME IN (SELECT B.NAME 
+FROM (SELECT NAME, COUNT(NAME) AS name_count FROM ANIMAL_INS GROUP BY NAME) B 
+WHERE B.name_count >= 2) GROUP BY NAME ORDER BY NAME;
