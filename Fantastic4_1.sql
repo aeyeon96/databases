@@ -1,72 +1,72 @@
 
-CREATE TABLE 답항 번호
+CREATE TABLE Answer_num
 (
-  답항번호  NOT NULL,
-  답항    NULL    ,
-  PRIMARY KEY (답항번호)
+  Ans_Num  NOT NULL,
+  Answer   NULL    ,
+  PRIMARY KEY (Ans_Num)
 );
 
-CREATE TABLE 번호취합
+CREATE TABLE Name_Numer
 (
-  이름 고유번호  NOT NULL,
-  설문 고유번호  NOT NULL,
-  답항번호     NOT NULL
+  ID   int          NOT NULL,
+  Name varchar(200) NULL    ,
+  PRIMARY KEY (ID)
 );
 
-CREATE TABLE 설문 번호부여
+CREATE TABLE Name_Qeustionnare
 (
-  설문 고유번호  NOT NULL,
-  설문       NOT NULL,
-  PRIMARY KEY (설문 고유번호)
+  Name_Num_ID int NOT NULL,
+  Ques_Num_ID int NOT NULL,
+  PRIMARY KEY (Name_Num_ID)
 );
 
-CREATE TABLE 설문-답항
+CREATE TABLE Numer_Merged_Data
 (
-  설문 고유번호  NOT NULL,
-  답항번호     NOT NULL,
-  PRIMARY KEY (설문 고유번호, 답항번호)
+  Name_Num_ID int NOT NULL,
+  Ques_Num_ID int NOT NULL,
+  Ans_Num         NOT NULL
 );
 
-CREATE TABLE 이름 번호부여
+CREATE TABLE Questionnare_Answer
 (
-  이름 고유번호  NOT NULL,
-  이름       NULL    ,
-  PRIMARY KEY (이름 고유번호)
+  Ques_Num_ID int NOT NULL,
+  Ans_Num         NOT NULL,
+  PRIMARY KEY (Ques_Num_ID, Ans_Num)
 );
 
-CREATE TABLE 이름-설문
+CREATE TABLE Questionnare_Num
 (
-  이름 고유번호  NOT NULL,
-  설문 고유번호  NOT NULL,
-  PRIMARY KEY (이름 고유번호)
+  ID           int          NOT NULL,
+  Questionnare varchar(200) NOT NULL,
+  PRIMARY KEY (ID)
 );
 
-ALTER TABLE 이름-설문
-  ADD CONSTRAINT FK_이름 번호부여_TO_이름-설문
-    FOREIGN KEY (이름 고유번호)
-    REFERENCES 이름 번호부여 (이름 고유번호);
+ALTER TABLE Name_Qeustionnare
+  ADD CONSTRAINT FK_Name_Numer_TO_Name_Qeustionnare
+    FOREIGN KEY (Name_Num_ID)
+    REFERENCES Name_Numer (ID);
 
-ALTER TABLE 이름-설문
-  ADD CONSTRAINT FK_설문 번호부여_TO_이름-설문
-    FOREIGN KEY (설문 고유번호)
-    REFERENCES 설문 번호부여 (설문 고유번호);
+ALTER TABLE Name_Qeustionnare
+  ADD CONSTRAINT FK_Questionnare_Num_TO_Name_Qeustionnare
+    FOREIGN KEY (Ques_Num_ID)
+    REFERENCES Questionnare_Num (ID);
 
-ALTER TABLE 설문-답항
-  ADD CONSTRAINT FK_설문 번호부여_TO_설문-답항
-    FOREIGN KEY (설문 고유번호)
-    REFERENCES 설문 번호부여 (설문 고유번호);
+ALTER TABLE Questionnare_Answer
+  ADD CONSTRAINT FK_Questionnare_Num_TO_Questionnare_Answer
+    FOREIGN KEY (Ques_Num_ID)
+    REFERENCES Questionnare_Num (ID);
 
-ALTER TABLE 설문-답항
-  ADD CONSTRAINT FK_답항 번호_TO_설문-답항
-    FOREIGN KEY (답항번호)
-    REFERENCES 답항 번호 (답항번호);
+ALTER TABLE Questionnare_Answer
+  ADD CONSTRAINT FK_Answer_num_TO_Questionnare_Answer
+    FOREIGN KEY (Ans_Num)
+    REFERENCES Answer_num (Ans_Num);
 
-ALTER TABLE 번호취합
-  ADD CONSTRAINT FK_이름-설문_TO_번호취합
-    FOREIGN KEY (이름 고유번호)
-    REFERENCES 이름-설문 (이름 고유번호);
+ALTER TABLE Numer_Merged_Data
+  ADD CONSTRAINT FK_Name_Qeustionnare_TO_Numer_Merged_Data
+    FOREIGN KEY (Name_Num_ID)
+    REFERENCES Name_Qeustionnare (Name_Num_ID);
 
-ALTER TABLE 번호취합
-  ADD CONSTRAINT FK_설문-답항_TO_번호취합
-    FOREIGN KEY (설문 고유번호, 답항번호)
-    REFERENCES 설문-답항 (설문 고유번호, 답항번호);
+ALTER TABLE Numer_Merged_Data
+  ADD CONSTRAINT FK_Questionnare_Answer_TO_Numer_Merged_Data
+    FOREIGN KEY (Ques_Num_ID, Ans_Num)
+    REFERENCES Questionnare_Answer (Ques_Num_ID, Ans_Num);
