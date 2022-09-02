@@ -4,7 +4,7 @@
     "width": 2000,
     "height": 2000,
     "scrollTop": -1.6,
-    "scrollLeft": -128.26666666666668,
+    "scrollLeft": 0,
     "zoomLevel": 1,
     "show": {
       "tableComment": true,
@@ -164,9 +164,9 @@
         ],
         "ui": {
           "active": false,
-          "left": 80,
-          "top": 180,
-          "zIndex": 83,
+          "left": 116.8,
+          "top": 156,
+          "zIndex": 104,
           "widthName": 64.20703125,
           "widthComment": 60
         },
@@ -222,9 +222,25 @@
               "widthDefault": 60
             },
             "id": "ae626807-3eef-4fb9-ac59-c027053e5555"
-          },
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 618,
+          "top": 193.2,
+          "zIndex": 106,
+          "widthName": 82.970703125,
+          "widthComment": 60
+        },
+        "visible": true,
+        "id": "34bdeaee-9f9f-4873-be68-f83e198d8f6c"
+      },
+      {
+        "name": "Company_Dept",
+        "comment": "관계테이블",
+        "columns": [
           {
-            "name": "Employee_id",
+            "name": "Company_ID",
             "comment": "unique id",
             "dataType": "varchar(200)",
             "default": "",
@@ -239,24 +255,47 @@
               "pk": false,
               "fk": true,
               "pfk": false,
-              "widthName": 75.76611328125,
+              "widthName": 76.1533203125,
               "widthComment": 60,
               "widthDataType": 73.677734375,
               "widthDefault": 60
             },
-            "id": "ac5524c8-bf6a-4198-a50a-8a536cc7065e"
+            "id": "3bb8fed8-1313-4910-89a1-d87e90d9c38d"
+          },
+          {
+            "name": "Dept_ID",
+            "comment": "unique id",
+            "dataType": "varchar(200)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": true,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 73.677734375,
+              "widthDefault": 60
+            },
+            "id": "94b3ea21-ee21-4408-b490-288a3af7d4f7"
           }
         ],
         "ui": {
           "active": false,
-          "left": 650,
-          "top": 201.2,
-          "zIndex": 85,
-          "widthName": 82.970703125,
-          "widthComment": 60
+          "left": 361.6,
+          "top": 468,
+          "zIndex": 109,
+          "widthName": 91.88916015625,
+          "widthComment": 67
         },
         "visible": true,
-        "id": "34bdeaee-9f9f-4873-be68-f83e198d8f6c"
+        "id": "5d3a3125-a250-4bf7-beb5-854d47ef3e34"
       }
     ],
     "indexes": []
@@ -275,22 +314,48 @@
           "columnIds": [
             "43036a4a-4f9d-46f8-af04-aee729021999"
           ],
-          "x": 440.677734375,
-          "y": 265.75,
-          "direction": "right"
+          "x": 297.1388671875,
+          "y": 327.5,
+          "direction": "bottom"
         },
         "end": {
-          "tableId": "34bdeaee-9f9f-4873-be68-f83e198d8f6c",
+          "tableId": "5d3a3125-a250-4bf7-beb5-854d47ef3e34",
           "columnIds": [
-            "ac5524c8-bf6a-4198-a50a-8a536cc7065e"
+            "3bb8fed8-1313-4910-89a1-d87e90d9c38d"
           ],
-          "x": 650,
-          "y": 266.45,
+          "x": 361.6,
+          "y": 523,
           "direction": "left"
         },
-        "constraintName": "fk_company_to_department",
+        "constraintName": "fk_company_to_company_dept",
         "visible": true,
-        "id": "768a89ef-4a7b-4f9b-83e1-3a2b09177e91"
+        "id": "9843c240-7ba8-4886-a1b2-1cb75c632dfe"
+      },
+      {
+        "identification": false,
+        "relationshipType": "ZeroN",
+        "startRelationshipType": "Dash",
+        "start": {
+          "tableId": "34bdeaee-9f9f-4873-be68-f83e198d8f6c",
+          "columnIds": [
+            "565c7ad1-1d7b-42e6-ace3-ec531ec1edc5"
+          ],
+          "x": 798.3388671875,
+          "y": 303.2,
+          "direction": "bottom"
+        },
+        "end": {
+          "tableId": "5d3a3125-a250-4bf7-beb5-854d47ef3e34",
+          "columnIds": [
+            "94b3ea21-ee21-4408-b490-288a3af7d4f7"
+          ],
+          "x": 738.4310546875,
+          "y": 523,
+          "direction": "right"
+        },
+        "constraintName": "fk_department_to_company_dept",
+        "visible": true,
+        "id": "2f92fc8f-9e24-401f-a761-96e73d2a4ca6"
       }
     ]
   }
